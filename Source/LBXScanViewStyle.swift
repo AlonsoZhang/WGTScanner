@@ -88,7 +88,7 @@ public struct LBXScanViewStyle
     
     
     // MARK: -非识别区域颜色,默认 RGBA (0,0,0,0.5)，范围（0--1）
-    public var color_NotRecoginitonArea:UIColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5);
+    public var color_NotRecoginitonArea:UIColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
     
     public init()
     {

@@ -34,7 +34,7 @@ public struct  LBXScanResult {
 
 open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     
-    let device:AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo);
+    let device:AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
     
     var input:AVCaptureDeviceInput?
     var output:AVCaptureMetadataOutput
@@ -44,7 +44,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     var stillImageOutput:AVCaptureStillImageOutput?
     
     //存储返回结果
-    var arrayResult:[LBXScanResult] = [];
+    var arrayResult:[LBXScanResult] = []
     
     //扫码结果返回block
     var successBlock:([LBXScanResult]) -> Void
@@ -80,7 +80,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         
         isNeedCaptureImage = isCaptureImg
         
-        stillImageOutput = AVCaptureStillImageOutput();
+        stillImageOutput = AVCaptureStillImageOutput()
         
         super.init()
         
@@ -363,7 +363,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
             AVMetadataObjectTypePDF417Code,
             AVMetadataObjectTypeAztecCode,
             
-        ];
+        ]
         //if #available(iOS 8.0, *)
        
         types.append(AVMetadataObjectTypeInterleaved2of5Code)
@@ -375,7 +375,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         types.append(AVMetadataObjectTypeDataMatrixCode)
         
         
-        return types;
+        return types
     }
     
     
@@ -455,19 +455,19 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         let colorFilter = CIFilter(name: "CIFalseColor", withInputParameters: ["inputImage":qrFilter!.outputImage!,"inputColor0":CIColor(cgColor: qrColor.cgColor),"inputColor1":CIColor(cgColor: bkColor.cgColor)])
         
         
-        let qrImage = colorFilter!.outputImage!;
+        let qrImage = colorFilter!.outputImage!
         
         //绘制
         let cgImage = CIContext().createCGImage(qrImage, from: qrImage.extent)!
         
         
-        UIGraphicsBeginImageContext(size);
-        let context = UIGraphicsGetCurrentContext()!;
-        context.interpolationQuality = CGInterpolationQuality.none;
-        context.scaleBy(x: 1.0, y: -1.0);
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.interpolationQuality = CGInterpolationQuality.none
+        context.scaleBy(x: 1.0, y: -1.0)
         context.draw(cgImage, in: context.boundingBoxOfClipPath)
-        let codeImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        let codeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
         return codeImage        
        
@@ -500,7 +500,7 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         let scaleRate:CGFloat = 20.0
         let resized = resizeImage(image: image, quality: CGInterpolationQuality.none, rate: scaleRate)
         
-        return resized;
+        return resized
     }
     
     
@@ -594,31 +594,31 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     */
     static open func addImageLogo(srcImg:UIImage,logoImg:UIImage,logoSize:CGSize )->UIImage
     {
-        UIGraphicsBeginImageContext(srcImg.size);
+        UIGraphicsBeginImageContext(srcImg.size)
         srcImg.draw(in: CGRect(x: 0, y: 0, width: srcImg.size.width, height: srcImg.size.height))
-        let rect = CGRect(x: srcImg.size.width/2 - logoSize.width/2, y: srcImg.size.height/2-logoSize.height/2, width:logoSize.width, height: logoSize.height);
+        let rect = CGRect(x: srcImg.size.width/2 - logoSize.width/2, y: srcImg.size.height/2-logoSize.height/2, width:logoSize.width, height: logoSize.height)
         logoImg.draw(in: rect)
-        let resultingImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        return resultingImage!;
+        let resultingImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resultingImage!
     }
 
     //图像缩放
     static func resizeImage(image:UIImage,quality:CGInterpolationQuality,rate:CGFloat)->UIImage?
     {
-        var resized:UIImage?;
-        let width    = image.size.width * rate;
-        let height   = image.size.height * rate;
+        var resized:UIImage?
+        let width    = image.size.width * rate
+        let height   = image.size.height * rate
         
-        UIGraphicsBeginImageContext(CGSize(width: width, height: height));
-        let context = UIGraphicsGetCurrentContext();
-        context!.interpolationQuality = quality;
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
+        let context = UIGraphicsGetCurrentContext()
+        context!.interpolationQuality = quality
         image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
         
-        resized = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        resized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
         
-        return resized;
+        return resized
     }
     
     
@@ -634,58 +634,58 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
     //图像旋转
     static func imageRotation(image:UIImage,orientation:UIImageOrientation)->UIImage
     {
-        var rotate:Double = 0.0;
-        var rect:CGRect;
-        var translateX:CGFloat = 0.0;
-        var translateY:CGFloat = 0.0;
-        var scaleX:CGFloat = 1.0;
-        var scaleY:CGFloat = 1.0;
+        var rotate:Double = 0.0
+        var rect:CGRect
+        var translateX:CGFloat = 0.0
+        var translateY:CGFloat = 0.0
+        var scaleX:CGFloat = 1.0
+        var scaleY:CGFloat = 1.0
         
         switch (orientation) {
         case UIImageOrientation.left:
-            rotate = .pi/2;
-            rect = CGRect(x: 0, y: 0, width: image.size.height, height: image.size.width);
-            translateX = 0;
-            translateY = -rect.size.width;
-            scaleY = rect.size.width/rect.size.height;
-            scaleX = rect.size.height/rect.size.width;
-            break;
+            rotate = .pi/2
+            rect = CGRect(x: 0, y: 0, width: image.size.height, height: image.size.width)
+            translateX = 0
+            translateY = -rect.size.width
+            scaleY = rect.size.width/rect.size.height
+            scaleX = rect.size.height/rect.size.width
+            break
         case UIImageOrientation.right:
-            rotate = 3 * .pi/2;
-            rect = CGRect(x: 0, y: 0, width: image.size.height, height: image.size.width);
-            translateX = -rect.size.height;
-            translateY = 0;
-            scaleY = rect.size.width/rect.size.height;
-            scaleX = rect.size.height/rect.size.width;
-            break;
+            rotate = 3 * .pi/2
+            rect = CGRect(x: 0, y: 0, width: image.size.height, height: image.size.width)
+            translateX = -rect.size.height
+            translateY = 0
+            scaleY = rect.size.width/rect.size.height
+            scaleX = rect.size.height/rect.size.width
+            break
         case UIImageOrientation.down:
-            rotate = .pi;
-            rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height);
-            translateX = -rect.size.width;
-            translateY = -rect.size.height;
-            break;
+            rotate = .pi
+            rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+            translateX = -rect.size.width
+            translateY = -rect.size.height
+            break
         default:
-            rotate = 0.0;
-            rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height);
-            translateX = 0;
-            translateY = 0;
-            break;
+            rotate = 0.0
+            rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+            translateX = 0
+            translateY = 0
+            break
         }
         
-        UIGraphicsBeginImageContext(rect.size);
-        let context = UIGraphicsGetCurrentContext()!;
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
         //做CTM变换
-        context.translateBy(x: 0.0, y: rect.size.height);
-        context.scaleBy(x: 1.0, y: -1.0);
-        context.rotate(by: CGFloat(rotate));
-        context.translateBy(x: translateX, y: translateY);
+        context.translateBy(x: 0.0, y: rect.size.height)
+        context.scaleBy(x: 1.0, y: -1.0)
+        context.rotate(by: CGFloat(rotate))
+        context.translateBy(x: translateX, y: translateY)
         
-        context.scaleBy(x: scaleX, y: scaleY);
+        context.scaleBy(x: scaleX, y: scaleY)
         //绘制图片
         context.draw(image.cgImage!, in: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height))        
-        let newPic = UIGraphicsGetImageFromCurrentImageContext();
+        let newPic = UIGraphicsGetImageFromCurrentImageContext()
         
-        return newPic!;
+        return newPic!
     }
 
     deinit

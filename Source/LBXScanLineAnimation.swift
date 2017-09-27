@@ -19,9 +19,9 @@ class LBXScanLineAnimation: UIImageView {
         self.animationRect = animationRect
         parentView.addSubview(self)
         
-        self.isHidden = false;
+        self.isHidden = false 
         
-        isAnimationing = true;
+        isAnimationing = true
         
         if image != nil
         {
@@ -33,29 +33,29 @@ class LBXScanLineAnimation: UIImageView {
     func stepAnimation()
     {
         if (!isAnimationing) {
-            return;
+            return
         }
         
-        var frame:CGRect = animationRect;
+        var frame:CGRect = animationRect
         
-        let hImg = self.image!.size.height * animationRect.size.width / self.image!.size.width;
+        let hImg = self.image!.size.height * animationRect.size.width / self.image!.size.width
         
-        frame.origin.y -= hImg;
-        frame.size.height = hImg;
-        self.frame = frame;
-        self.alpha = 0.0;
+        frame.origin.y -= hImg
+        frame.size.height = hImg
+        self.frame = frame
+        self.alpha = 0.0
         
         UIView.animate(withDuration: 1.4, animations: { () -> Void in
             
-            self.alpha = 1.0;
+            self.alpha = 1.0
             
-            var frame = self.animationRect;
-            let hImg = self.image!.size.height * self.animationRect.size.width / self.image!.size.width;
+            var frame = self.animationRect
+            let hImg = self.image!.size.height * self.animationRect.size.width / self.image!.size.width
             
-            frame.origin.y += (frame.size.height -  hImg);
-            frame.size.height = hImg;
+            frame.origin.y += (frame.size.height -  hImg)
+            frame.size.height = hImg
             
-            self.frame = frame;
+            self.frame = frame
             
             }, completion:{ (value: Bool) -> Void in
                                 
@@ -66,8 +66,8 @@ class LBXScanLineAnimation: UIImageView {
     
     func stopStepAnimating()
     {
-        self.isHidden = true;
-        isAnimationing = false;
+        self.isHidden = true
+        isAnimationing = false
     }
     
     static public func instance()->LBXScanLineAnimation

@@ -7,22 +7,10 @@
 //
 
 import UIKit
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?;
-    
-
+    var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-//        window? = UIWindow()
-//        window?.frame = UIScreen.main.bounds;
-//        
-//        window?.rootViewController =  UINavigationController(rootViewController: MainTableViewController())
-//        
-//        window?.makeKeyAndVisible();
         return true
     }
 }
-

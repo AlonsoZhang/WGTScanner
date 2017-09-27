@@ -40,14 +40,14 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
 
         // Do any additional setup after loading the view.
         
-              // [self.view addSubview:_qRScanView];
+              // [self.view addSubview:_qRScanView]
         self.view.backgroundColor = UIColor.black
         self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
     }
     
     open func setNeedCodeImage(needCodeImg:Bool)
     {
-        isNeedCodeImage = needCodeImg;
+        isNeedCodeImage = needCodeImg
     }
     //设置框内识别
     open func setOpenInterestRect(isOpen:Bool){
@@ -188,7 +188,7 @@ open class LBXScanViewController: UIViewController, UIImagePickerControllerDeleg
         
         picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
-        picker.delegate = self;
+        picker.delegate = self
         
         picker.allowsEditing = true
         
