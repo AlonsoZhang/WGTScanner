@@ -33,6 +33,8 @@
 		D6DC97051F6D0C1300E1CCEB /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488928E01C1A7BE4005A8F83 /* LBXScanViewController.swift */; };
 		D6DC97061F6D0C1300E1CCEB /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488928E11C1A7BE4005A8F83 /* LBXScanViewStyle.swift */; };
 		D6DC97071F6D0C1300E1CCEB /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488928E21C1A7BE4005A8F83 /* LBXScanWrapper.swift */; };
+		E2AAE3E81F96E3E1002A5BBD /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AAE3E71F96E3E1002A5BBD /* SwiftNotice.swift */; };
+		E2AAE3EB1F9722C2002A5BBD /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2AAE3EA1F9722C2002A5BBD /* Config.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		D6DC96F41F6D0C0200E1CCEB /* SwiftScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6DC96F61F6D0C0200E1CCEB /* SwiftScanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftScanner.h; sourceTree = "<group>"; };
 		D6DC96F71F6D0C0200E1CCEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2AAE3E71F96E3E1002A5BBD /* SwiftNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
+		E2AAE3EA1F9722C2002A5BBD /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		7D42B9AE1C05EE9A0084D045 /* swiftScan */ = {
 			isa = PBXGroup;
 			children = (
+				E2AAE3EA1F9722C2002A5BBD /* Config.plist */,
+				E2AAE3E71F96E3E1002A5BBD /* SwiftNotice.swift */,
 				73FF0B8A1CF545FE0083F169 /* ScanResultController.xib */,
 				73FF0B8B1CF545FE0083F169 /* ScanResultController.swift */,
 				73FF0B8D1CF545FE0083F169 /* QQScanViewController.swift */,
@@ -226,7 +232,7 @@
 				TargetAttributes = {
 					7D42B9AB1C05EE9A0084D045 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = E52T968EQM;
+						DevelopmentTeam = T3AX2Y3769;
 						LastSwiftMigration = 0820;
 					};
 					D6DC96F31F6D0C0200E1CCEB = {
@@ -264,6 +270,7 @@
 				7D42B9BA1C05EE9A0084D045 /* LaunchScreen.storyboard in Resources */,
 				7D42B9B71C05EE9A0084D045 /* Assets.xcassets in Resources */,
 				73FF0B8E1CF545FE0083F169 /* ScanResultController.xib in Resources */,
+				E2AAE3EB1F9722C2002A5BBD /* Config.plist in Resources */,
 				7D42B9B51C05EE9A0084D045 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +292,7 @@
 				488928E61C1A7BE4005A8F83 /* LBXScanViewController.swift in Sources */,
 				73FF0B911CF545FE0083F169 /* QQScanViewController.swift in Sources */,
 				7D42B9B21C05EE9A0084D045 /* ViewController.swift in Sources */,
+				E2AAE3E81F96E3E1002A5BBD /* SwiftNotice.swift in Sources */,
 				488928E51C1A7BE4005A8F83 /* LBXScanView.swift in Sources */,
 				488928E81C1A7BE4005A8F83 /* LBXScanWrapper.swift in Sources */,
 				7D42B9B01C05EE9A0084D045 /* AppDelegate.swift in Sources */,
@@ -451,11 +459,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = E52T968EQM;
+				DEVELOPMENT_TEAM = T3AX2Y3769;
 				INFOPLIST_FILE = swiftScan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wistron.test0091.ceeyang;
+				PRODUCT_BUNDLE_IDENTIFIER = wistron.WGTScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -470,11 +478,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = E52T968EQM;
+				DEVELOPMENT_TEAM = T3AX2Y3769;
 				INFOPLIST_FILE = swiftScan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wistron.test0091.ceeyang;
+				PRODUCT_BUNDLE_IDENTIFIER = wistron.WGTScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;

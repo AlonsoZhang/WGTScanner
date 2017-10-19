@@ -6,13 +6,21 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+        <array key="PingFang.ttc">
+            <string>PingFangSC-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="i6H-BL-pFI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pPC-tc-93P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="hZG-9V-vcl" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YBZ-j7-pIt">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -22,6 +30,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="pLp-AR-080"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pPC-tc-93P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1252" y="-255"/>
         </scene>
@@ -36,13 +45,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WGT Scanner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdS-Aq-8y5">
+                                <rect key="frame" x="40.5" y="114" width="294.5" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="KLY-fg-LUP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="45"/>
+                                <color key="textColor" red="0.095418371260166168" green="0.25257846713066101" blue="0.49932241439819336" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02h-T9-xnP">
+                                <rect key="frame" x="87.5" y="313.5" width="200" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cTs-sB-2GB"/>
+                                    <constraint firstAttribute="width" constant="200" id="ymB-Gx-uDA"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入姓名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjm-Mk-HEM">
+                                <rect key="frame" x="124.5" y="274" width="127" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLK-kb-Zgo">
+                                <rect key="frame" x="36" y="537" width="303" height="80"/>
+                                <color key="backgroundColor" red="0.65525775409999998" green="0.81989516979999999" blue="0.59746690849999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="D0e-M0-o8U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="35"/>
+                                <state key="normal" title="开始扫码">
+                                    <color key="titleColor" red="0.41905932740000001" green="0.18458894849999999" blue="0.044209954939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startScan:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mk7-0p-u9n"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gLK-kb-Zgo" secondAttribute="trailing" constant="20" id="2wz-P9-GeO"/>
+                            <constraint firstItem="gLK-kb-Zgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="66f-cr-19d"/>
+                            <constraint firstItem="02h-T9-xnP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NHl-YF-24N"/>
+                            <constraint firstItem="02h-T9-xnP" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R8U-ac-Fg1"/>
+                            <constraint firstItem="hdS-Aq-8y5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WE2-FO-eaG"/>
+                            <constraint firstItem="02h-T9-xnP" firstAttribute="top" secondItem="Wjm-Mk-HEM" secondAttribute="bottom" constant="10" id="WYp-v0-o3g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gLK-kb-Zgo" secondAttribute="bottom" constant="50" id="ZZW-pk-Dva"/>
+                            <constraint firstItem="hdS-Aq-8y5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="hLc-Zg-frZ"/>
+                            <constraint firstItem="Wjm-Mk-HEM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t8c-hV-l5h"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="sQf-U5-oEV"/>
+                    <connections>
+                        <outlet property="btn" destination="gLK-kb-Zgo" id="DYK-VF-f3O"/>
+                        <outlet property="textfield" destination="02h-T9-xnP" id="gD3-PE-SQy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-470" y="-255"/>
+            <point key="canvasLocation" x="-471.19999999999999" y="-255.02248875562222"/>
         </scene>
     </scenes>
 </document>

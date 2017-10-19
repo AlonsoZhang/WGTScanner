@@ -24,7 +24,8 @@ class QQScanViewController: LBXScanViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        let defaultStand = UserDefaults.standard
+        self.navigationItem.title = defaultStand.string(forKey: "name")
     }
     
     override func viewDidAppear(_ animated: Bool) {

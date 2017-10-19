@@ -86,17 +86,25 @@ class ScanResultController: UIViewController {
     }
     
     @IBAction func SendMsg(_ sender: UIButton) {
-        //DispatchQueue.global().async {
-            //self.synchronousPost()
-        //}
-        self.navigationController?.popViewController(animated: true)
+        sendbtn.isEnabled = false
+        DispatchQueue.global().async {
+            self.synchronousPost()
+        }
+        //self.navigationController?.popViewController(animated: true)
     }
     
     func synchronousPost() {
-        let url:URL! = URL(string:"http://10.42.25.182/MABCATA01/Bobcat.aspx")
+        let file = Bundle.main.path(forResource:"Config", ofType: "plist")!
+        let ConfigPlist = NSDictionary(contentsOfFile: file)! as! [String : Any]
+        let urlStr = ConfigPlist["URL"] as! String
+        let url:URL! = URL(string:urlStr)
+        print(url)
         var urlRequest:URLRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 3)
         urlRequest.httpMethod = "POST"
-        let str:String = "sn=FD1732501GCJ08X0C&c=QUERY_RECORD&p=fgsn"
+        let defaultStand = UserDefaults.standard
+        let str:String = String(format: "sn=%@,name=%@",(codeResult?.strScanned)!,defaultStand.string(forKey: "name")!)
+        print(str)
+        //let str = "sn=\(String(describing: codeStringLabel.text))&name=\(String(describing: defaultStand.string(forKey: "name")))"
         let data:Data = str.data(using: .utf8, allowLossyConversion: true)!
         urlRequest.httpBody = data
         var response:URLResponse?
@@ -108,10 +116,16 @@ class ScanResultController: UIViewController {
                 print(jsonStr)
                 self.navigationController?.popViewController(animated: true)
             }else{
-                showMsg(title: "error", message: "return data error")
+                DispatchQueue.main.async {
+                    self.sendbtn.isEnabled = true
+                    self.noticeError("数据错误", autoClear: true, autoClearTime: 3)
+                }
             }
         } catch let error{
-            showMsg(title: "error", message: error.localizedDescription)
+            DispatchQueue.main.async {
+                self.sendbtn.isEnabled = true
+                self.noticeError(error.localizedDescription, autoClear: true, autoClearTime: 3)
+            }
         }
     }
     
