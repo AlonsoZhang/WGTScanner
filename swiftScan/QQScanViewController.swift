@@ -11,7 +11,7 @@ import UIKit
 class QQScanViewController: LBXScanViewController {
     var topTitle:UILabel?
     var isOpenedFlash:Bool = false
-    var isAutoMode:Bool = false
+    var isAutoMode:Bool = true
     var bottomItemsView:UIView?
     var btnPhoto:UIButton = UIButton()
     var btnFlash:UIButton = UIButton()
@@ -30,6 +30,9 @@ class QQScanViewController: LBXScanViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let file = Bundle.main.path(forResource:"Config", ofType: "plist")!
+        let ConfigPlist = NSDictionary(contentsOfFile: file)! as! [String : Any]
+        isAutoMode = ConfigPlist["isAutoMode"] as! Bool
         drawBottomItems()
     }
 
@@ -75,7 +78,11 @@ class QQScanViewController: LBXScanViewController {
         self.btnMode = UIButton()
         btnMode.bounds = btnFlash.bounds
         btnMode.center = CGPoint(x: bottomItemsView!.frame.width * 3/4, y: bottomItemsView!.frame.height/2)
-        btnMode.setImage(UIImage(named: "CodeScan.bundle/qrcode_scan_btn_myqrcode_nor"), for: UIControlState.normal)
+        if isAutoMode {
+            btnMode.setImage(UIImage(named: "CodeScan.bundle/qrcode_scan_btn_myqrcode_down"), for: UIControlState.normal)
+        }else{
+            btnMode.setImage(UIImage(named: "CodeScan.bundle/qrcode_scan_btn_myqrcode_nor"), for: UIControlState.normal)
+        }
         btnMode.setImage(UIImage(named: "CodeScan.bundle/qrcode_scan_btn_myqrcode_down"), for: UIControlState.highlighted)
         btnMode.addTarget(self, action: #selector(QQScanViewController.myMode), for: UIControlEvents.touchUpInside)
         
