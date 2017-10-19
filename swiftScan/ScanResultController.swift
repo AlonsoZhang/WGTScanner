@@ -102,7 +102,7 @@ class ScanResultController: UIViewController {
         var urlRequest:URLRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 3)
         urlRequest.httpMethod = "POST"
         let defaultStand = UserDefaults.standard
-        let str:String = String(format: "sn=%@,name=%@",(codeResult?.strScanned)!,defaultStand.string(forKey: "name")!)
+        let str:String = String(format: "SN=%@&Name=%@",(codeResult?.strScanned)!,defaultStand.string(forKey: "name")!)
         print(str)
         //let str = "sn=\(String(describing: codeStringLabel.text))&name=\(String(describing: defaultStand.string(forKey: "name")))"
         let data:Data = str.data(using: .utf8, allowLossyConversion: true)!
@@ -114,11 +114,21 @@ class ScanResultController: UIViewController {
             //print(dic)
             if let jsonStr = String(data: received, encoding:String.Encoding.utf8){
                 print(jsonStr)
-                self.navigationController?.popViewController(animated: true)
+                if (jsonStr.contains("Pass")){
+                    DispatchQueue.main.async {
+                        self.noticeTop("Pass", autoClear: true, autoClearTime: 2)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.noticeError("Add Fail", autoClear: true, autoClearTime: 2)
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
             }else{
                 DispatchQueue.main.async {
                     self.sendbtn.isEnabled = true
-                    self.noticeError("数据错误", autoClear: true, autoClearTime: 3)
+                    self.noticeError("Data error", autoClear: true, autoClearTime: 3)
                 }
             }
         } catch let error{
