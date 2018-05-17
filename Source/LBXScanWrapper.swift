@@ -548,25 +548,24 @@ open class LBXScanWrapper: NSObject,AVCaptureMetadataOutputObjectsDelegate {
         {
             return CGRect.zero
         }
-        
-        let corner:[[String:Float]] = codeResult.arrayCorner  as! [[String:Float]]
+        let corner:[[String:NSNumber]] = codeResult.arrayCorner  as! [[String:NSNumber]]
         
         let dicTopLeft     = corner[0]
         let dicTopRight    = corner[1]
         let dicBottomRight = corner[2]
         let dicBottomLeft  = corner[3]
         
-        let xLeftTopRatio:Float = dicTopLeft["X"]!
-        let yLeftTopRatio:Float  = dicTopLeft["Y"]!
+        let xLeftTopRatio:Float = Float(dicTopLeft["X"]!)
+        let yLeftTopRatio:Float  = Float(dicTopLeft["Y"]!)
         
-        let xRightTopRatio:Float = dicTopRight["X"]!
-        let yRightTopRatio:Float = dicTopRight["Y"]!
+        let xRightTopRatio:Float = Float(dicTopRight["X"]!)
+        let yRightTopRatio:Float = Float(dicTopRight["Y"]!)
         
-        let xBottomRightRatio:Float = dicBottomRight["X"]!
-        let yBottomRightRatio:Float = dicBottomRight["Y"]!
+        let xBottomRightRatio:Float = Float(dicBottomRight["X"]!)
+        let yBottomRightRatio:Float = Float(dicBottomRight["Y"]!)
         
-        let xLeftBottomRatio:Float = dicBottomLeft["X"]!
-        let yLeftBottomRatio:Float = dicBottomLeft["Y"]!
+        let xLeftBottomRatio:Float = Float(dicBottomLeft["X"]!)
+        let yLeftBottomRatio:Float = Float(dicBottomLeft["Y"]!)
         
         //由于截图只能矩形，所以截图不规则四边形的最大外围
         let xMinLeft = CGFloat( min(xLeftTopRatio, xLeftBottomRatio) )
